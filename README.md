@@ -13,6 +13,9 @@ Customheads is a plugin that allows you to place player heads on your [Nukkit](g
 
 ## Commands
 - /head < name >
+
+## Permissions
+- For command: customheads.admin
   
 ## Events
 There are two events, so you can use them:
