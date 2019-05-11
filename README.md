@@ -49,4 +49,4 @@ public void onDestroy( HeadDestroyEvent e ) {
 
 ## Contact
 - Discord: Bex#5272
-- Twitter: @weirdBEXI
+- Twitter: [@weirdBEXI](https://twitter.com/weirdBEXI?s=09)
