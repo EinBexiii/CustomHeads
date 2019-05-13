@@ -10,6 +10,7 @@ Customheads is a plugin that allows you to place player heads on your [Nukkit](h
 - [ ] Load head from a png file.
 - [ ] Get head from a player who's offline.
 - [ ] Config
+- [x] Update checker
 
 ## Commands
 - /head < name >
