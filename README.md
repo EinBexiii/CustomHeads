@@ -23,7 +23,7 @@ There are two events, so you can use them:
 
 
 #### 1. HeadDestroyEvent
-```Java
+```
 @EventHandler
 public void onDestroy( HeadDestroyEvent e ) {
   Player player = e.getPlayer();
@@ -36,7 +36,7 @@ public void onDestroy( HeadDestroyEvent e ) {
 
 
 #### 2. HeadPlaceEvent
-```Java
+```
  @EventHandler
  public void onPlace( HeadPlaceEvent e ) {
    Player player = e.getPlayer();
