@@ -8,15 +8,16 @@ import de.bex.customheads.entity.EntityHead;
 import de.bex.customheads.listener.EntityDamageListener;
 import de.bex.customheads.listener.LevelBlockListener;
 import de.bex.customheads.listener.PlayerJoinListener;
+import de.bex.customheads.utils.Updater;
 import lombok.Getter;
 
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 /**
  * @author Bex | EinBexiii
@@ -41,6 +42,14 @@ public class CustomHeads extends PluginBase {
         Entity.registerEntity( EntityHead.class.getSimpleName(), EntityHead.class);
 
         this.getLogger().info( "§ahas been activated!" );
+
+        try {
+            Updater updater = new Updater( new URL( "https://raw.githubusercontent.com/EinBexiii/CustomHeads/master/src/main/resources/plugin.yml" ), this );
+
+            updater.check();
+        } catch ( MalformedURLException e ) {
+            e.printStackTrace();
+        }
 
     }
 
