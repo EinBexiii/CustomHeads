@@ -8,7 +8,6 @@ import de.bex.customheads.entity.EntityHead;
 import de.bex.customheads.listener.EntityDamageListener;
 import de.bex.customheads.listener.LevelBlockListener;
 import de.bex.customheads.listener.PlayerJoinListener;
-import de.bex.customheads.utils.Updater;
 import lombok.Getter;
 
 import java.io.InputStream;
@@ -43,13 +42,6 @@ public class CustomHeads extends PluginBase {
 
         this.getLogger().info( "§ahas been activated!" );
 
-        try {
-            Updater updater = new Updater( new URL( "https://raw.githubusercontent.com/EinBexiii/CustomHeads/master/src/main/resources/plugin.yml" ), this );
-
-            updater.check();
-        } catch ( MalformedURLException e ) {
-            e.printStackTrace();
-        }
 
     }
 
