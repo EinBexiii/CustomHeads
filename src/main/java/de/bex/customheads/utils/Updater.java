@@ -11,7 +11,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 /**
- * @author Erik Miller
+ * @author Bex | EinBexiii
  * @version 1.0
  */
 @RequiredArgsConstructor
@@ -42,7 +42,7 @@ public class Updater {
 
             if(!version.equalsIgnoreCase( this.plugin.getDescription().getVersion() )) {
                 this.plugin.getLogger().info( "§aNew update is avaible!" );
-                
+
             }else {
                 this.plugin.getLogger().info( "§cNo new updates avaible..." );
             }
@@ -52,9 +52,4 @@ public class Updater {
         }
     }
 
-    private void downloadUpdate() {
-        File jar = new File( this.plugin.getServer().getDataPath() + "/plugins/download_customheads-1.0-SNAPSHOT.jar" );
-
-
-    }
 }
