@@ -1,5 +1,5 @@
-# CustomHeads
-Project is closed down!
+# CustomHeads [Project is closed down!]
+
 
 ## Installation
 1. Download the Jar [here](https://nukkitx.com/resources/customheads.245/).
