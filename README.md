@@ -1,5 +1,5 @@
 # CustomHeads
-Customheads is a plugin that allows you to place player heads on your [Nukkit](https://github.com/NukkitX/Nukkit) server.
+Project is closed down!
 
 ## Installation
 1. Download the Jar [here](https://nukkitx.com/resources/customheads.245/).
