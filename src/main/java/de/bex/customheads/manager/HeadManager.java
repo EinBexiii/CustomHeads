@@ -10,8 +10,11 @@ import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.nbt.tag.DoubleTag;
 import cn.nukkit.nbt.tag.FloatTag;
 import cn.nukkit.nbt.tag.ListTag;
+import cn.nukkit.utils.SkinAnimation;
 
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -41,6 +44,37 @@ public class HeadManager {
 	}
 
 	private CompoundTag getNbt() {
+		
+		/**
+		 * NEW Skintag to set with new Skindata
+		 * @author depascaldc
+		 * @since 01.01.2020
+		 */
+		CompoundTag skinTag = new CompoundTag()
+                .putByteArray("Data", head.getSkinData().data)
+                .putInt("SkinImageWidth", head.getSkinData().width)
+                .putInt("SkinImageHeight", head.getSkinData().height)
+                .putString("ModelId", head.getSkinId())
+                .putByteArray("SkinResourcePatch", head.getSkinResourcePatch().getBytes(StandardCharsets.UTF_8))
+                .putByteArray("GeometryData", head.getGeometryData().getBytes(StandardCharsets.UTF_8))
+                .putByteArray("AnimationData", head.getAnimationData().getBytes(StandardCharsets.UTF_8))
+                .putBoolean("PremiumSkin", head.isPremium())
+                .putBoolean("PersonaSkin", head.isPersona())
+                .putBoolean("CapeOnClassicSkin", head.isCapeOnClassic());
+        List<SkinAnimation> animations = head.getAnimations();
+        if (!animations.isEmpty()) {
+            ListTag<CompoundTag> animationsTag = new ListTag<>("AnimationImageData");
+            for (SkinAnimation animation : animations) {
+                animationsTag.add(new CompoundTag()
+                        .putFloat("Frames", animation.frames)
+                        .putInt("Type", animation.type)
+                        .putInt("ImageWidth", animation.image.width)
+                        .putInt("ImageHeight", animation.image.height)
+                        .putByteArray("Image", animation.image.data));
+            }
+            skinTag.putList(animationsTag);
+        }
+        
 		return new CompoundTag()
 				.putList(new ListTag<>("Pos").add(new DoubleTag("", loc.x + 0.5)).add(new DoubleTag("", loc.y))
 						.add(new DoubleTag("", loc.z + 0.5)))
@@ -50,11 +84,7 @@ public class HeadManager {
 						.add(new FloatTag("", (float) loc.getPitch())))
 				.putBoolean("Invulnerable", true).putString("NameTag", "").putString("name", name)
 				.putBoolean("npc", true).putFloat("scale", 1)
-				.putCompound("Skin",
-						new CompoundTag().putString("ModelId", "geometry." + this.getGeometryName())
-								.putByteArray("Data", head.getSkinData())
-								.putString("GeometryName", "geometry" + this.getGeometryName())
-								.putByteArray("GeometryData", this.geometryContent().getBytes()));
+				.putCompound("Skin", skinTag);
 	}
 
 	private double getYaw() {
